@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Intranet Condomínio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>🔐 Bem-vindo ao Painel Condominial</h2>
+    <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a>.</p>
+
+    <form id="loginForm">
+      <label for="usuario">👤 Usuário:</label>
+      <input type="text" id="usuario" placeholder="Digite seu usuário" required />
+
+      <label for="senha">🔑 Senha:</label>
+      <input type="password" id="senha" placeholder="Digite sua senha" required />
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p class="login-info">Área exclusiva para moradores e administrador</p>
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      // Limpa inputs ao carregar
+      document.querySelectorAll("input").forEach(input => input.value = "");
+    });
+
+    // Validação do login
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const usuario = document.getElementById("usuario").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+
+      if (!usuario || !senha) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+
+      if (senha.length < 6) {
+        alert("A senha deve ter pelo menos 6 caracteres.");
+        return;
+      }
+
+      // Tudo certo: redireciona ou chama autenticação
+      alert("Login validado com sucesso!");
+      window.location.href = "sistema.html";
+    });
+  </script>
+</body>
+</html>
